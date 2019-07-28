@@ -18,10 +18,13 @@
 </head>
 
 <body>
-    <div id='calendar'></div>
+    <button onclick="getUserInfo('ijimaso');">Get User Info</button>
+    <div id='calendar' onload="getUserInfo('ijimaso')"></div>
+    <p id='p'></p>
 
-    <script type="text/javascript" src="./src/front/index.js">
-    </script>
+    <script type="text/javascript" src="./src/front/index.js"></script>
+    <script type="text/javascript" src="./src/back/fetch.js"></script>
+
 </body>
 
 </html>

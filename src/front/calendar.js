@@ -2,8 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendarEl = document.getElementById('calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['dayGrid'],
+        defaultView: 'dayGridMonth',
+        defaultDate: '2019-08-08',
+        eventLimit: true,
+        views: {
+            timeGrid: {
+                eventLimit: 1
+            }
+        },
         header: {
-            center: 'addEventButton'
+            right: 'addEventButton today prev,next'
         },
         customButtons: {
             addEventButton: {
@@ -11,48 +19,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 click: () => {
                     const header = new Headers();
                     header.append('Access-Control-Allow-Origin', 'text/plain');
-                    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCutJqz56653xV2wwSvut_hQ&order=date&maxResults=30&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`,
+                    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCutJqz56653xV2wwSvut_hQ&order=date&maxResults=30&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
+                    fetch(url,
                         {
                             mode: 'cors',
                             header
                         })
                         .then(response => {
                             if (!response.ok) {
-                                console.error("サーバーエラー", response);
+                                console.error('Server Error', response);
                             } else {
+                                console.log('Crawl Success!!');
                                 response.json().then(results => {
-                                    const items = results.items;
-                                    const events = [];
+                                    const { items } = results;
                                     items.forEach(item => {
                                         const { publishedAt, title } = item.snippet;
                                         const { videoId } = item.id;
                                         const imageurl = item.snippet.thumbnails.medium.url;
-                                        const start = publishedAt.split("T")[0];
                                         const event = {
                                             title,
-                                            start,
+                                            start: publishedAt.split("T")[0],
                                             url: `https://www.youtube.com/watch?v=${videoId}`,
                                             imageurl
                                         };
-                                        events.push(event);
+                                        calendar.addEvent(event);
                                     });
-                                    console.table(events);
-                                    calendar.addEventSource(events);
                                 })
                             }
                         }).catch(error => {
-                            console.error("ネットワークエラー", error);
+                            console.error('Network Error', error);
                         });
                 }
             }
         },
         eventRender: (info) => {
+            // console.log(info);
+            tippy(info.el, {
+                content: info.event.title,
+                placement: 'top',
+                arrow: true,
+                arrowType: 'sharp',
+                animation: 'fade',
+            })
             if (info.event.extendedProps.imageurl) {
                 info.el.querySelector('.fc-title').innerHTML =
-                    `<img src='${info.event.extendedProps.imageurl}' width='170' height='100'><br>
-                            ${info.event.title}`;
+                    `<img src='${info.event.extendedProps.imageurl}' width='170' height='105'>`;
             }
-        }
+        },
+        eventColor: 'white',
+        // テストイベント
+        // events: [
+        //     {
+        //         title: 'ijima',
+        //         start: '2019-08-06'
+        //     }, {
+        //         title: 'ijima2',
+        //         start: '2019-08-08'
+        //     }]
     })
     calendar.render();
 });

@@ -31,13 +31,18 @@
 
     <!-- Firebase resources -->
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
 
     <title>YouTuber Calendar</title>
 </head>
 
 <body>
     <header>YouTuber Calendar</header>
+
+    <!-- Googleログインボタン -->
+    <button type="button" class="btn btn-danger" id="login-button">Google Login</button>
+
+    <p id="user-name"></p>
 
     <!-- ドロップダウンメニュー -->
     <select class="form-control form-control-sm">
@@ -59,6 +64,7 @@
     <footer>created by Sou Ijima</footer>
 
     <script type="text/javascript" src="./src/back/init-firebase.js"></script>
+    <script type="text/javascript" src="./src/back/login.js"></script>
     <script type="text/javascript" src="./src/front/calendar.js"></script>
 </body>
 

@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const header = new Headers();
                     header.append('Access-Control-Allow-Origin', 'text/plain');
                     const channel = document.getElementsByClassName('form-control')[0].value;
-                    console.log(channel);
+                    const numberResults = document.getElementsByClassName('form-control')[1].value;
 
                     // チャンネルIDを取得
-                    const getChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`
-                    fetch(getChannelIdUrl, {
+                    const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`
+                    fetch(crawlChannelIdUrl, {
                         mode: 'cors',
                         header
                     })
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     for (const item of items) {
                                         if ('channelId' in item['id']) {
                                             const channelId = item['id']['channelId'];
-                                            const getVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=30&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
-                                            fetch(getVideosUrl, {
+                                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
+                                            fetch(crawlVideosUrl, {
                                                 mode: 'cors',
                                                 header
                                             })
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 })
                             }
                         }).catch(error => {
-                            console.log('NetWork Error', error);
+                            console.log('Network Error', error);
                         })
                 }
             }

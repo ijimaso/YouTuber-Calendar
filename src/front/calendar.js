@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     header.append('Access-Control-Allow-Origin', 'text/plain');
                     const channel = document.getElementsByClassName('form-control')[0].value;
                     const numberResults = document.getElementsByClassName('form-control')[1].value;
+                    console.log(channel, numberResults);
 
                     // チャンネルIDを取得
                     const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`

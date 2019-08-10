@@ -29,19 +29,23 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+    <!-- Firebase resources -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+
     <title>YouTuber Calendar</title>
 </head>
 
 <body>
     <header>YouTuber Calendar</header>
-    <!-- チャンネル選択ドロップダウン -->
+
+    <!-- ドロップダウンメニュー -->
     <select class="form-control form-control-sm">
         <option>東海オンエア</option>
         <option>東海オンエアの控え室</option>
         <option>はじめしゃちょー</option>
         <option>SUSURU</option>
     </select>
-    <!-- 本数指定ドロップダウン -->
     <select class="form-control form-control-sm">
         <option>10</option>
         <option>20</option>
@@ -49,10 +53,12 @@
         <option>40</option>
         <option>50</option>
     </select>
+
     <div id='calendar'></div>
+
     <footer>created by Sou Ijima</footer>
 
-
+    <script type="text/javascript" src="./src/back/init-firebase.js"></script>
     <script type="text/javascript" src="./src/front/calendar.js"></script>
 </body>
 

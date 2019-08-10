@@ -3,59 +3,89 @@ document.addEventListener('DOMContentLoaded', () => {
     const calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['dayGrid'],
         defaultView: 'dayGridMonth',
-        defaultDate: '2019-08-08',
-        eventLimit: true,
         views: {
-            timeGrid: {
-                eventLimit: 1
+            dayGrid: {
+                eventLimit: 1,
+                eventLimitText: 'more videos'
             }
         },
         header: {
-            right: 'addEventButton today prev,next'
+            left: 'crawlButton',
+            center: 'title',
+            right: 'today prev,next'
         },
         customButtons: {
-            addEventButton: {
+            crawlButton: {
                 text: 'Crawl YouTube Data',
                 click: () => {
                     const header = new Headers();
                     header.append('Access-Control-Allow-Origin', 'text/plain');
-                    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCutJqz56653xV2wwSvut_hQ&order=date&maxResults=30&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
-                    fetch(url,
-                        {
-                            mode: 'cors',
-                            header
-                        })
+                    const channel = document.getElementsByClassName('form-control')[0].value;
+                    console.log(channel);
+
+                    // チャンネルIDを取得
+                    const getChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`
+                    fetch(getChannelIdUrl, {
+                        mode: 'cors',
+                        header
+                    })
                         .then(response => {
                             if (!response.ok) {
-                                console.error('Server Error', response);
+                                console.log('Server Error', response);
                             } else {
-                                console.log('Crawl Success!!');
+                                console.log('Crawled Channel ID!!');
                                 response.json().then(results => {
                                     const { items } = results;
-                                    items.forEach(item => {
-                                        const { publishedAt, title } = item.snippet;
-                                        const { videoId } = item.id;
-                                        const imageurl = item.snippet.thumbnails.medium.url;
-                                        const event = {
-                                            title,
-                                            start: publishedAt.split("T")[0],
-                                            url: `https://www.youtube.com/watch?v=${videoId}`,
-                                            imageurl
-                                        };
-                                        calendar.addEvent(event);
-                                    });
+
+                                    for (const item of items) {
+                                        if ('channelId' in item['id']) {
+                                            const channelId = item['id']['channelId'];
+                                            const getVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=30&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
+                                            fetch(getVideosUrl, {
+                                                mode: 'cors',
+                                                header
+                                            })
+                                                .then(response => {
+                                                    if (!response.ok) {
+                                                        console.error('Server Error', response);
+                                                    } else {
+                                                        console.log('Crawled Video Lists!!');
+                                                        response.json().then(results => {
+                                                            const { items } = results;
+
+                                                            items.forEach(item => {
+                                                                const { publishedAt, title, channelTitle } = item.snippet;
+                                                                const { videoId } = item.id;
+                                                                const imageurl = item.snippet.thumbnails.medium.url;
+                                                                const event = {
+                                                                    title,
+                                                                    start: publishedAt.split("T")[0],
+                                                                    url: `https://www.youtube.com/watch?v=${videoId}`,
+                                                                    imageurl,
+                                                                    channelTitle
+                                                                };
+                                                                calendar.addEvent(event);
+                                                            });
+                                                        })
+                                                    }
+                                                }).catch(error => {
+                                                    console.error('Network Error', error);
+                                                });
+                                            break;
+                                        }
+                                    }
                                 })
                             }
                         }).catch(error => {
-                            console.error('Network Error', error);
-                        });
+                            console.log('NetWork Error', error);
+                        })
                 }
             }
         },
         eventRender: (info) => {
             // console.log(info);
             tippy(info.el, {
-                content: info.event.title,
+                content: `<strong>${info.event.extendedProps.channelTitle}</strong><br>${info.event.title}`,
                 placement: 'top',
                 arrow: true,
                 arrowType: 'sharp',
@@ -63,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             if (info.event.extendedProps.imageurl) {
                 info.el.querySelector('.fc-title').innerHTML =
-                    `<img src='${info.event.extendedProps.imageurl}' width='170' height='105'>`;
+                    `<img src='${info.event.extendedProps.imageurl}' width='170' height='100'>`;
             }
         },
         eventColor: 'white',

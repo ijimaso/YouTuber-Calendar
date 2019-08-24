@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         customButtons: {
             crawlButton: {
                 text: 'Crawl YouTube Data',
-                click: () => {
+                click: async () => {
                     const header = new Headers();
                     header.append('Access-Control-Allow-Origin', 'text/plain');
                     const channel = document.getElementsByClassName('form-control')[0].value;
@@ -26,60 +26,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // チャンネルIDを取得
                     const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`
-                    fetch(crawlChannelIdUrl, {
+                    const resultsChannel = await fetch(crawlChannelIdUrl, {
                         mode: 'cors',
                         header
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                console.log('Server Error', response);
-                            } else {
-                                console.log('Crawled Channel ID!!');
-                                response.json().then(results => {
-                                    const { items } = results;
+                    });
+                    const resultsChannelJson = await resultsChannel.json();
 
-                                    for (const item of items) {
-                                        if ('channelId' in item['id']) {
-                                            const channelId = item['id']['channelId'];
-                                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
-                                            fetch(crawlVideosUrl, {
-                                                mode: 'cors',
-                                                header
-                                            })
-                                                .then(response => {
-                                                    if (!response.ok) {
-                                                        console.error('Server Error', response);
-                                                    } else {
-                                                        console.log('Crawled Video Lists!!');
-                                                        response.json().then(results => {
-                                                            const { items } = results;
+                    const { items } = resultsChannelJson;
+                    for (const item of items) {
+                        if (item['id']['kind'] === 'youtube#channel') {
+                            const { channelId } = item['id'];
+                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
 
-                                                            items.forEach(item => {
-                                                                const { publishedAt, title, channelTitle } = item.snippet;
-                                                                const { videoId } = item.id;
-                                                                const imageurl = item.snippet.thumbnails.medium.url;
-                                                                const event = {
-                                                                    title,
-                                                                    start: publishedAt.split("T")[0],
-                                                                    url: `https://www.youtube.com/watch?v=${videoId}`,
-                                                                    imageurl,
-                                                                    channelTitle
-                                                                };
-                                                                calendar.addEvent(event);
-                                                            });
-                                                        })
-                                                    }
-                                                }).catch(error => {
-                                                    console.error('Network Error', error);
-                                                });
-                                            break;
-                                        }
-                                    }
-                                })
-                            }
-                        }).catch(error => {
-                            console.log('Network Error', error);
-                        })
+                            // 動画情報を取得
+                            const resultsVideos = await fetch(crawlVideosUrl, {
+                                mode: 'cors',
+                                header
+                            });
+                            const resultsVideosJson = await resultsVideos.json();
+
+                            const { items } = resultsVideosJson;
+                            items.forEach(item => {
+                                const { publishedAt, title, channelTitle } = item.snippet;
+                                const { videoId } = item.id;
+                                const imageurl = item.snippet.thumbnails.medium.url;
+
+                                const event = {
+                                    title,
+                                    start: publishedAt.split("T")[0],
+                                    url: `https://www.youtube.com/watch?v=${videoId}`,
+                                    imageurl,
+                                    channelTitle
+                                };
+                                calendar.addEvent(event);
+                            });
+                            break;
+                        }
+                    }
                 }
             }
         },

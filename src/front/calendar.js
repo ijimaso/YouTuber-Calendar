@@ -18,17 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
             crawlButton: {
                 text: 'Crawl YouTube Data',
                 click: async () => {
-                    const header = new Headers();
-                    header.append('Access-Control-Allow-Origin', 'text/plain');
                     const channel = document.getElementsByClassName('form-control')[0].value;
                     const numberResults = document.getElementsByClassName('form-control')[1].value;
                     console.log(channel, numberResults);
+
+                    const header = new Headers();
+                    header.append('Access-Control-Allow-Origin', 'text/plain');
 
                     // チャンネルIDを取得
                     const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`
                     const resultsChannel = await fetch(crawlChannelIdUrl, {
                         mode: 'cors',
                         header
+                    }).catch((err) => {
+                        console.log(err);
                     });
                     const resultsChannelJson = await resultsChannel.json();
 
@@ -36,12 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     for (const item of items) {
                         if (item['id']['kind'] === 'youtube#channel') {
                             const { channelId } = item['id'];
-                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
 
                             // 動画情報を取得
+                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
                             const resultsVideos = await fetch(crawlVideosUrl, {
                                 mode: 'cors',
                                 header
+                            }).catch((err) => {
+                                console.log(err);
                             });
                             const resultsVideosJson = await resultsVideos.json();
 
@@ -74,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 arrow: true,
                 arrowType: 'sharp',
                 animation: 'fade',
-            })
+            });
+
             if (info.event.extendedProps.imageurl) {
                 info.el.querySelector('.fc-title').innerHTML =
                     `<img src='${info.event.extendedProps.imageurl}' width='170' height='100'>`;

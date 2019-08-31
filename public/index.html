@@ -33,6 +33,11 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
 
+    <!-- Google API resource -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+
     <title>YouTuber Calendar</title>
 </head>
 
@@ -50,6 +55,7 @@
         <option>東海オンエアの控え室</option>
         <option>はじめしゃちょー</option>
         <option>SUSURU</option>
+        <option>Hilty&Bosch</option>
     </select>
     <select class="form-control form-control-sm">
         <option>10</option>
@@ -63,9 +69,11 @@
 
     <footer>created by Sou Ijima</footer>
 
-    <script type="text/javascript" src="./src/back/init-firebase.js"></script>
-    <script type="text/javascript" src="./src/back/login.js"></script>
-    <script type="text/javascript" src="./src/front/calendar.js"></script>
+    <!-- <script type="text/javascript" src="./src/back/init-firebase.js"></script> -->
+    <script type="text/javascript" src="../src/back/login.js"></script>
+
+    <script type="text/javascript" src="../src/back/config.js"></script>
+    <script type="text/javascript" src="../src/front/calendar.js"></script>
 </body>
 
 </html>

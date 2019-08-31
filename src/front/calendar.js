@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     header.append('Access-Control-Allow-Origin', 'text/plain');
 
                     // チャンネルIDを取得
-                    const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`
+                    const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=${apikey['key']}`
                     const resultsChannel = await fetch(crawlChannelIdUrl, {
                         mode: 'cors',
                         header
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const { channelId } = item['id'];
 
                             // 動画情報を取得
-                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=AIzaSyCzELFogwdWFTsEw1MwBYqrUpbfPtnNGrg`;
+                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=${apikey['key']}`;
                             const resultsVideos = await fetch(crawlVideosUrl, {
                                 mode: 'cors',
                                 header

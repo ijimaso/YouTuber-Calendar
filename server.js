@@ -3,7 +3,6 @@ const fs = require('fs');
 
 const server = http.createServer((request, response) => {
     const { url } = request;
-    console.log(url);
     const extension = url.split('.')[url.split('.').length - 1];
     const path = '.' + url;
 
@@ -29,15 +28,11 @@ const server = http.createServer((request, response) => {
                 }
             });
             break;
-
-        default:
-            console.log('No File!!');
-            break;
     }
 });
 
 const port = process.env.PORT || 3000;
 
 server.listen(port, () => {
-    console.log(`Open http://localhost:${port}`);
+    console.log(`To access YouTube Calendar, Open http://localhost:${port}`);
 });

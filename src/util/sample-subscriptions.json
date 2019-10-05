@@ -1,0 +1,141 @@
+{
+    "kind": "youtube#subscriptionListResponse",
+    "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/dKDkmKtwrc7Cm2PI6QHOX5CM0SY\"",
+    "nextPageToken": "CAUQAA",
+    "pageInfo": {
+        "totalResults": 120,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#subscription",
+            "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/E2ajmy3H6De8-F9mcNczqoj47rg\"",
+            "id": "vBJr8n3k44HAJCIScFkKSjSRiG-hTQZQXFDAiUJX424",
+            "snippet": {
+                "publishedAt": "2017-05-14T07:20:20.000Z",
+                "title": "東海オンエア",
+                "description": "どうも、東海オンエアです。\nぜひチャンネル登録お願いします！\n\nサブチャンネル【東海オンエアの控え室】もぜひチャンネル登録してね！！！\nhttps://www.youtube.com/channel/UCynI...\n\nグッズ購入はこちらから！！\nhttps://goo.gl/YtauZW\n\n有料メンバーシップの登録はこちらから！\nhttps://www.youtube.com/channel/UCutJqz56653xV2wwSvut_hQ/join\n\nお仕事の依頼はこちらから\nhttps://www.uuum.co.jp/inquiry_promotion\n\nファンレターはこちらへ\n〒106-6137 東京都港区六本木 6-10-1 六本木ヒルズ森タワー 37階　東海オンエア宛\n\n【Twitterアカウント】\nてつや→https://twitter.com/TO_TETSUYA\nとしみつ→https://twitter.com/TO_TOSHIMITSU\nしばゆー→https://twitter.com/TOKAI_ONAIR\nりょう→https://twitter.com/TO_RYOO\nゆめまる→https://twitter.com/TO_yumemarucas\n虫眼鏡→https://twitter.com/TO_ZAWAKUN",
+                "resourceId": {
+                    "kind": "youtube#channel",
+                    "channelId": "UCutJqz56653xV2wwSvut_hQ"
+                },
+                "channelId": "UCwO1HbZXg3YqJjeyswo3xCQ",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/-M5KzT-_lLa0/AAAAAAAAAAI/AAAAAAAAAAA/Ajz1nbMt04M/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/-M5KzT-_lLa0/AAAAAAAAAAI/AAAAAAAAAAA/Ajz1nbMt04M/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/-M5KzT-_lLa0/AAAAAAAAAAI/AAAAAAAAAAA/Ajz1nbMt04M/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    }
+                }
+            }
+        },
+        {
+            "kind": "youtube#subscription",
+            "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/-qrCZMA4gxvZ_r9vtnlB30Hhz3Q\"",
+            "id": "vBJr8n3k44HAJCIScFkKSgtdQGK3-CEFgmKueP1yD1A",
+            "snippet": {
+                "publishedAt": "2017-03-20T13:38:25.000Z",
+                "title": "東海オンエアの控え室",
+                "description": "撮影の裏側やメンバーの日常など、多種多様な動画が目白押し！\nそれがこのサブチャンネル【東海オンエアの控え室】である！\n\nメインチャンネルはこちら\nhttps://www.youtube.com/channel/UCutJqz56653xV2wwSvut_hQ\n\nグッズ購入はこちらから！！\nhttps://goo.gl/YtauZW\n\nお仕事の依頼はこちらから\nhttps://www.uuum.co.jp/inquiry_promotion\n\nファンレターはこちらへ\n〒106-6137 東京都港区六本木 6-10-1 六本木ヒルズ森タワー 37階　東海オンエア宛\n\n【Twitterアカウント】\nてつや→https://twitter.com/TO_TETSUYA\nとしみつ→https://twitter.com/TO_TOSHIMITSU\nしばゆー→https://twitter.com/TOKAI_ONAIR\nりょう→https://twitter.com/TO_RYOO\nゆめまる→https://twitter.com/TO_yumemarucas\n虫眼鏡→https://twitter.com/TO_ZAWAKUN",
+                "resourceId": {
+                    "kind": "youtube#channel",
+                    "channelId": "UCynIYcsBwTrwBIecconPN2A"
+                },
+                "channelId": "UCwO1HbZXg3YqJjeyswo3xCQ",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/-WRCNo0KOGsI/AAAAAAAAAAI/AAAAAAAAAAA/wmFtO-E3t8Q/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/-WRCNo0KOGsI/AAAAAAAAAAI/AAAAAAAAAAA/wmFtO-E3t8Q/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/-WRCNo0KOGsI/AAAAAAAAAAI/AAAAAAAAAAA/wmFtO-E3t8Q/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    }
+                }
+            }
+        },
+        {
+            "kind": "youtube#subscription",
+            "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/Iyinbh4UDULg6OOv6936lY8Vv78\"",
+            "id": "vBJr8n3k44EgVvrP5NCw2nQbE2MaLRXsSpVC3kMkryo",
+            "snippet": {
+                "publishedAt": "2018-09-17T13:16:22.118Z",
+                "title": "年収チャンネル",
+                "description": "",
+                "resourceId": {
+                    "kind": "youtube#channel",
+                    "channelId": "UCahWm4NUU8ccUPdw0VA0DCQ"
+                },
+                "channelId": "UCwO1HbZXg3YqJjeyswo3xCQ",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/-vCNWi3QCasg/AAAAAAAAAAI/AAAAAAAAAAA/8WZptdgnMhM/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/-vCNWi3QCasg/AAAAAAAAAAI/AAAAAAAAAAA/8WZptdgnMhM/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/-vCNWi3QCasg/AAAAAAAAAAI/AAAAAAAAAAA/8WZptdgnMhM/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    }
+                }
+            }
+        },
+        {
+            "kind": "youtube#subscription",
+            "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/KhB1X-y5dpaZ_CjR7yNE87XRFFQ\"",
+            "id": "vBJr8n3k44HAJCIScFkKSnVx3tXUSoXHk1dm2patF7I",
+            "snippet": {
+                "publishedAt": "2017-12-16T20:56:39.354Z",
+                "title": "実況者ジャンヌ",
+                "description": "◆自己紹介◆\n\n名前：ジャンヌ・ダルク(Janne-Da-Arc)\n\n名前の由来:歴史から来てますが音楽のJanneDaArcも好きです(:3\n\n年齢:永遠の24歳※実際は違います。\n\n住んでる所:兵庫-大阪-東京\n\n仕事:メインがIT関連で副業でYouTubeしております。\n\n趣味:良くランニングとかサバゲーします。インドアよりアウトドアな変わった実況者です。\n\n主な投稿作品:FPS/TPS/Steam/サバゲ/スマホアプリ\n\n◇Twitter\n@bulletjda\nhttps://twitter.com/bulletjda\n動画の最新情報はこちら!\n生放送や様々な情報を日記感覚でツイート!\n\n◇YouTube実況チーム\nYouTubeで活動するためのグループ AtSAを展開!\n\nプロゲーミングチーム 野良連合ストリーマー部門所属\n\n◇事務所\n現在未所属\n\n◇スポンサー様\nしまリス堂 様 naconやXim4と言った様々なデバイスが安く購入出来ます!!\nhttps://www.shimarisudou.com/\n\nRED WINGS様 JDAが使ってるコントローラーはこちら!↓国内で安心安全に購入出来ます!\nhttp://scuf-redwings.jimdo.com/\n\nG2A様 PCゲームを買うならここで!↓下記のURLからお願いします。\nhttps://www.g2a.com/r/user-570f3dee17070\n\nEAA様 FPS系の記事を掲載 ネタの提供などして頂いてます。\nhttp://fpsjp.net/\n\n◇連絡先\n一般ユーザーの方はTwitterまでお願いします!\n@bulletjda\n\n企業様に関しましてはビジネス関係の問い合わせ先記載の\njannedaarc0106@outlook.jpまでお願いします",
+                "resourceId": {
+                    "kind": "youtube#channel",
+                    "channelId": "UC6MlluylILbTelNRAvofO1w"
+                },
+                "channelId": "UCwO1HbZXg3YqJjeyswo3xCQ",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/-oLioemP03qU/AAAAAAAAAAI/AAAAAAAAAAA/sZmeMyNtLbg/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/-oLioemP03qU/AAAAAAAAAAI/AAAAAAAAAAA/sZmeMyNtLbg/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/-oLioemP03qU/AAAAAAAAAAI/AAAAAAAAAAA/sZmeMyNtLbg/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    }
+                }
+            }
+        },
+        {
+            "kind": "youtube#subscription",
+            "etag": "\"p4VTdlkQv3HQeTEaXgvLePAydmU/tfdmUYnmGM0G4X_So_vo3FhnUV8\"",
+            "id": "vBJr8n3k44EgVvrP5NCw2r972er0iZP9VdDP1x3B1wU",
+            "snippet": {
+                "publishedAt": "2019-08-23T03:31:51.102Z",
+                "title": "中田敦彦のYouTube大学",
+                "description": "中田敦彦が「教育系YouTuber」として、学べる動画を毎日更新。生で授業を受けたい人は中田敦彦オンラインサロン「PROGRESS」へ。入会はコチラ https://www.nakataatsuhiko.com/fanclub-salon",
+                "resourceId": {
+                    "kind": "youtube#channel",
+                    "channelId": "UCFo4kqllbcQ4nV83WCyraiw"
+                },
+                "channelId": "UCwO1HbZXg3YqJjeyswo3xCQ",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/-AsBdQpV2HbQ/AAAAAAAAAAI/AAAAAAAAAAA/uboyf8s2OVA/s88-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/-AsBdQpV2HbQ/AAAAAAAAAAI/AAAAAAAAAAA/uboyf8s2OVA/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/-AsBdQpV2HbQ/AAAAAAAAAAI/AAAAAAAAAAA/uboyf8s2OVA/s800-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                    }
+                }
+            }
+        }
+    ]
+}

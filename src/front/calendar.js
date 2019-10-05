@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 text: 'Crawl YouTube Data',
                 click: async () => {
                     const channelId = document.getElementById('dropdown-channels').value;
-                    console.log(channelId);
 
                     // 動画情報を取得
                     const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=10&key=${apikey['key']}`;
                     const resultsVideos = await fetch(crawlVideosUrl, {
+                        method: "GET",
                         mode: 'cors',
                         headers: { "Content-Type": "Access-Control-Allow-Origin; text/plain" }
                     }).catch((err) => {

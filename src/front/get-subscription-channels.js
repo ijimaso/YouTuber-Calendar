@@ -2,6 +2,7 @@
 const reGetSubscLists = async (pageToken, subscriptionChannels) => {
     const reGetSubscListsUrl = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=${myChannelId}&maxResults=50&pageToken=${pageToken}&key=${apikey['key']}`;
     const resultsSubscriptions = await fetch(reGetSubscListsUrl, {
+        method: "GET",
         mode: "cors",
         headers: { "Content-Type": "Access-Control-Allow-Origin; text/plain" }
     }).catch((err) => {
@@ -42,6 +43,7 @@ btnChannelId.addEventListener('click', async () => {
     // 自分のチャンネルの登録チャンネル群をAPIで取得
     const getSubscListsUrl = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=${myChannelId}&maxResults=50&key=${apikey['key']}`;
     const resultsSubscriptions = await fetch(getSubscListsUrl, {
+        method: "GET",
         mode: "cors",
         headers: { "Content-Type": "Access-Control-Allow-Origin; text/plain" }
     }).catch((err) => {

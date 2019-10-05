@@ -44,18 +44,14 @@
 <body>
     <header>YouTuber Calendar</header>
 
-    <!-- Googleログインボタン -->
-    <button type="button" class="btn btn-danger" id="login-button">Google Login</button>
-
-    <p id="user-name"></p>
+    <!-- チャンネルID入力form -->
+    <form>
+        <input type="text" placeholder="チャンネルID" id="input-mychannelid" value="UCwO1HbZXg3YqJjeyswo3xCQ">
+    </form>
+    <button id="btn-mychannelid">OK</button>
 
     <!-- ドロップダウンメニュー -->
-    <select class="form-control form-control-sm">
-        <option>東海オンエア</option>
-        <option>東海オンエアの控え室</option>
-        <option>はじめしゃちょー</option>
-        <option>SUSURU</option>
-        <option>Hilty&Bosch</option>
+    <select class="form-control form-control-sm" id="dropdown-channels">
     </select>
     <select class="form-control form-control-sm">
         <option>10</option>
@@ -69,11 +65,14 @@
 
     <footer>created by Sou Ijima</footer>
 
-    <!-- <script type="text/javascript" src="./src/back/init-firebase.js"></script> -->
-    <script type="text/javascript" src="../src/back/login.js"></script>
-
     <script type="text/javascript" src="../src/back/config.js"></script>
+
+    <!-- フロント -->
     <script type="text/javascript" src="../src/front/calendar.js"></script>
+    <script type= "text/javascript" src="../src/front/get-subscription-channels.js"></script>
+
+    <!-- スリープ関数 -->
+    <script type="text/javascript" src="../src/util/sleep.js"></script>
 </body>
 
 </html>

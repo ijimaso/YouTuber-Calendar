@@ -18,61 +18,38 @@ document.addEventListener('DOMContentLoaded', () => {
             crawlButton: {
                 text: 'Crawl YouTube Data',
                 click: async () => {
-                    const channel = document.getElementsByClassName('form-control')[0].value;
-                    const numberResults = document.getElementsByClassName('form-control')[1].value;
-                    console.log(channel, numberResults);
+                    const channelId = document.getElementById('dropdown-channels').value;
+                    console.log(channelId);
 
-                    const header = new Headers();
-                    header.append('Access-Control-Allow-Origin', 'text/plain');
-
-                    // チャンネルIDを取得
-                    const crawlChannelIdUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&order=relevance&q=${channel}&key=${apikey['key']}`
-                    const resultsChannel = await fetch(crawlChannelIdUrl, {
+                    // 動画情報を取得
+                    const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=10&key=${apikey['key']}`;
+                    const resultsVideos = await fetch(crawlVideosUrl, {
                         mode: 'cors',
-                        header
+                        headers: { "Content-Type": "Access-Control-Allow-Origin; text/plain" }
                     }).catch((err) => {
                         console.log(err);
                     });
-                    const resultsChannelJson = await resultsChannel.json();
+                    const resultsVideosJson = await resultsVideos.json();
 
-                    const { items } = resultsChannelJson;
-                    for (const item of items) {
-                        if (item['id']['kind'] === 'youtube#channel') {
-                            const { channelId } = item['id'];
+                    const { items } = resultsVideosJson;
+                    items.forEach(item => {
+                        const { publishedAt, title, channelTitle } = item.snippet;
+                        const { videoId } = item.id;
+                        const imageurl = item.snippet.thumbnails.medium.url;
 
-                            // 動画情報を取得
-                            const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=${numberResults}&key=${apikey['key']}`;
-                            const resultsVideos = await fetch(crawlVideosUrl, {
-                                mode: 'cors',
-                                header
-                            }).catch((err) => {
-                                console.log(err);
-                            });
-                            const resultsVideosJson = await resultsVideos.json();
-
-                            const { items } = resultsVideosJson;
-                            items.forEach(item => {
-                                const { publishedAt, title, channelTitle } = item.snippet;
-                                const { videoId } = item.id;
-                                const imageurl = item.snippet.thumbnails.medium.url;
-
-                                const event = {
-                                    title,
-                                    start: publishedAt.split("T")[0],
-                                    url: `https://www.youtube.com/watch?v=${videoId}`,
-                                    imageurl,
-                                    channelTitle
-                                };
-                                calendar.addEvent(event);
-                            });
-                            break;
-                        }
-                    }
+                        const event = {
+                            title,
+                            start: publishedAt.split("T")[0],
+                            url: `https://www.youtube.com/watch?v=${videoId}`,
+                            imageurl,
+                            channelTitle
+                        };
+                        calendar.addEvent(event);
+                    });
                 }
             }
         },
         eventRender: (info) => {
-            // console.log(info);
             tippy(info.el, {
                 content: `<strong>${info.event.extendedProps.channelTitle}</strong><br>${info.event.title}`,
                 placement: 'top',

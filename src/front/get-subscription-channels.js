@@ -65,7 +65,7 @@ btnChannelId.addEventListener('click', async () => {
     })
 
     // 次ページトークンがある場合は，もう一度APIを叩く
-    const { nextPageToken } = results
+    const { nextPageToken } = results;
     if (nextPageToken) {
         sleep(1000);
         await reGetSubscLists(nextPageToken, subscriptionChannels);
@@ -74,8 +74,8 @@ btnChannelId.addEventListener('click', async () => {
     // ドロップダウンに挿入
     const dropdownChannels = document.getElementById('dropdown-channels');
     subscriptionChannels.forEach((channel) => {
-        const { channelName } = channel
-        const { channelId } = channel
+        const { channelName } = channel;
+        const { channelId } = channel;
 
         const option = document.createElement('option');
         option.innerHTML = channelName;

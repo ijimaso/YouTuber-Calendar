@@ -29,47 +29,38 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-    <!-- Firebase resources -->
-    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
-
-    <!-- Google API resource -->
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/index.css">
 
     <title>YouTuber Calendar</title>
 </head>
 
 <body>
-    <header>YouTuber Calendar</header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">YouTuber Calendar</a>
 
-    <!-- チャンネルID入力form -->
-    <form>
-        <input type="text" placeholder="チャンネルID" id="input-mychannelid" value="UCwO1HbZXg3YqJjeyswo3xCQ">
-    </form>
-    <button id="btn-mychannelid">OK</button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="input-group">
+                <input type="text" class="form-control" id="input-mychannelid" placeholder="マイチャンネルID" value="UCwO1HbZXg3YqJjeyswo3xCQ">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-danger" id="btn-mychannelid">OK</button>
+                </div>
+            </div>
+        </div>
+        <select class="custom-select" id="dropdown-channels">
+            <option selected>登録チャンネルを選んでください</option>
+            <option value="UCutJqz56653xV2wwSvut_hQ">東海オンエア</option>
+        </select>
+    </nav>
 
-    <!-- ドロップダウンメニュー -->
-    <select class="form-control form-control-sm" id="dropdown-channels">
-    </select>
-    <select class="form-control form-control-sm">
-        <option>10</option>
-        <option>20</option>
-        <option>30</option>
-        <option>40</option>
-        <option>50</option>
-    </select>
-
+    <!-- カレンダー本体 -->
     <div id='calendar'></div>
-
-    <footer>created by Sou Ijima</footer>
 
     <script type="text/javascript" src="../src/back/config.js"></script>
 
     <!-- フロント -->
     <script type="text/javascript" src="../src/front/calendar.js"></script>
-    <script type= "text/javascript" src="../src/front/get-subscription-channels.js"></script>
+    <script type="text/javascript" src="../src/front/get-subscription-channels.js"></script>
 
     <!-- スリープ関数 -->
     <script type="text/javascript" src="../src/util/sleep.js"></script>

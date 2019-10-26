@@ -36,17 +36,21 @@
 </head>
 
 <body>
+    <!-- ヘッダー -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- タイトル -->
         <a class="navbar-brand" href="#">YouTuber Calendar</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="input-group">
-                <input type="text" class="form-control" id="input-mychannelid" placeholder="マイチャンネルID" value="UCwO1HbZXg3YqJjeyswo3xCQ">
-                <div class="input-group-append">
-                    <button type="button" class="btn btn-danger" id="btn-mychannelid">OK</button>
-                </div>
+        <!-- チャンネルIDフォーム -->
+        <div class="input-group col-sm">
+            <input type="text" class="form-control" id="input-mychannelid" placeholder="マイチャンネルID"
+                value="UCwO1HbZXg3YqJjeyswo3xCQ">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-danger" id="btn-mychannelid">OK</button>
             </div>
         </div>
+
+        <!-- 登録チャンネルセレクト -->
         <select class="custom-select" id="dropdown-channels">
             <option selected>登録チャンネルを選んでください</option>
             <option value="UCutJqz56653xV2wwSvut_hQ">東海オンエア</option>
@@ -56,13 +60,10 @@
     <!-- カレンダー本体 -->
     <div id='calendar'></div>
 
+    <!-- JS読み込み -->
     <script type="text/javascript" src="../src/back/config.js"></script>
-
-    <!-- フロント -->
     <script type="text/javascript" src="../src/front/calendar.js"></script>
     <script type="text/javascript" src="../src/front/get-subscription-channels.js"></script>
-
-    <!-- スリープ関数 -->
     <script type="text/javascript" src="../src/util/sleep.js"></script>
 </body>
 

@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 各カレンダー設定
         plugins: ['dayGrid', 'interaction'],
         defaultView: 'dayGridMonth',
-        height: 'parent',
+        height: 'auto',
         views: {
             dayGrid: {
                 eventLimit: 1,

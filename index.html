@@ -37,30 +37,32 @@
 </head>
 
 <body>
-    <!-- ヘッダー -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- タイトル -->
-        <a class="navbar-brand" href="#">YouTuber Calendar</a>
+    <div class="container-fluid">
+        <!-- ヘッダー -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- タイトル -->
+            <h2>YouTuber Calendar</h2>
 
-        <!-- チャンネルIDフォーム -->
-        <div class="input-group col-sm">
-            <input type="text" class="form-control" id="input-mychannelid" placeholder="マイチャンネルID"
-                value="UCwO1HbZXg3YqJjeyswo3xCQ">
-            <div class="input-group-append">
-                <button type="button" class="btn btn-danger" id="btn-mychannelid">OK</button>
+            <!-- チャンネルIDフォーム -->
+            <div class="input-group col-sm">
+                <input type="text" class="form-control" id="input-mychannelid" placeholder="マイチャンネルID"
+                    value="UCwO1HbZXg3YqJjeyswo3xCQ">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-danger" id="btn-mychannelid">OK</button>
+                </div>
             </div>
-        </div>
 
-        <!-- 登録チャンネルセレクト -->
-        <select class="custom-select" id="select-menu-channels">
-            <!-- テスト -->
-            <option value="UCutJqz56653xV2wwSvut_hQ">東海オンエア</option>
-            <option value="UCahWm4NUU8ccUPdw0VA0DCQ">年収チャンネル</option>
-        </select>
-    </nav>
+            <!-- 登録チャンネルセレクトメニュー -->
+            <select class="custom-select" id="select-menu-channels">
+                <!-- テスト -->
+                <option value="UCutJqz56653xV2wwSvut_hQ">東海オンエア</option>
+                <option value="UCahWm4NUU8ccUPdw0VA0DCQ">年収チャンネル</option>
+            </select>
+        </nav>
 
-    <!-- カレンダー本体 -->
-    <div id='calendar'></div>
+        <!-- カレンダー本体 -->
+        <div id='calendar'></div>
+    </div>
 
     <!-- JS読み込み -->
     <script type="text/javascript" src="./src/config.js"></script>

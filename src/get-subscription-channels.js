@@ -1,5 +1,5 @@
 // APIを再度叩く関数
-const reGetSubscLists = async (pageToken, subscriptionChannels) => {
+const reGetSubscLists = async (pageToken, subscriptionChannels, myChannelId) => {
     const reGetSubscListsUrl = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=${myChannelId}&maxResults=50&pageToken=${pageToken}&key=${apikey['key']}`;
     const resultsSubscriptions = await fetch(reGetSubscListsUrl, {
         method: "GET",
@@ -25,7 +25,7 @@ const reGetSubscLists = async (pageToken, subscriptionChannels) => {
     // 次ページトークンを取得
     const { nextPageToken } = results;
     if (nextPageToken) {
-        await reGetSubscLists(nextPageToken, subscriptionChannels);
+        await reGetSubscLists(nextPageToken, subscriptionChannels, myChannelId);
     }
 
     if (!nextPageToken) {
@@ -34,9 +34,9 @@ const reGetSubscLists = async (pageToken, subscriptionChannels) => {
 };
 
 // メイン
-const myChannelId = document.getElementById('input-mychannelid').value;
 const btnChannelId = document.getElementById('btn-mychannelid');
 btnChannelId.addEventListener('click', async () => {
+    const myChannelId = document.getElementById('input-mychannelid').value;
     const subscriptionChannels = [];
 
     // 自分のチャンネルの登録チャンネル群をAPIで取得
@@ -66,7 +66,7 @@ btnChannelId.addEventListener('click', async () => {
     // 次ページトークンがある場合は，もう一度APIを叩く
     const { nextPageToken } = results;
     if (nextPageToken) {
-        await reGetSubscLists(nextPageToken, subscriptionChannels);
+        await reGetSubscLists(nextPageToken, subscriptionChannels, myChannelId);
     }
 
     // セレクトボックスに挿入

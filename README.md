@@ -19,6 +19,9 @@
 4. カレンダーの右上にある取得ボタンを押す．
 
 ## 使用ライブラリ・API
+### フロント
 [FullCalendar v4](https://fullcalendar.io/)<br>
 [Bootstrap 4.2.1](https://getbootstrap.com/docs/4.2/getting-started/introduction/)<br>
+
+### API
 [YouTube Data API v3](https://developers.google.com/youtube/v3/)

@@ -1,6 +1,6 @@
 // 動画情報を取得する関数
 const crawlVideos = async (calendar, clickedDate) => {
-    const channelId = document.getElementById('dropdown-channels').value;
+    const channelId = document.getElementById('select-menu-channels').value;
 
     const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=10&order=date&publishedBefore=${clickedDate}&key=${apikey['key']}`;
     const resultsVideos = await fetch(crawlVideosUrl, {

@@ -25,7 +25,6 @@ const reGetSubscLists = async (pageToken, subscriptionChannels) => {
     // 次ページトークンを取得
     const { nextPageToken } = results;
     if (nextPageToken) {
-        sleep(1000);
         await reGetSubscLists(nextPageToken, subscriptionChannels);
     }
 
@@ -67,12 +66,18 @@ btnChannelId.addEventListener('click', async () => {
     // 次ページトークンがある場合は，もう一度APIを叩く
     const { nextPageToken } = results;
     if (nextPageToken) {
-        sleep(1000);
         await reGetSubscLists(nextPageToken, subscriptionChannels);
     }
 
-    // ドロップダウンに挿入
-    const dropdownChannels = document.getElementById('dropdown-channels');
+    // セレクトボックスに挿入
+    const selectMenuChannels = document.getElementById('select-menu-channels');
+
+    // セレクトボックスの先頭
+    const topOption = document.createElement('option');
+    topOption.innerHTML = '--登録チャンネルを選んでください--';
+    selectMenuChannels.appendChild(topOption);
+
+    // 取得した登録チャンネルを取得
     subscriptionChannels.forEach((channel) => {
         const { channelName } = channel;
         const { channelId } = channel;
@@ -80,6 +85,6 @@ btnChannelId.addEventListener('click', async () => {
         const option = document.createElement('option');
         option.innerHTML = channelName;
         option.value = channelId;
-        dropdownChannels.appendChild(option);
+        selectMenuChannels.appendChild(option);
     });
 });

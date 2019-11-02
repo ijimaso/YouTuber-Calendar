@@ -1,14 +1,8 @@
 // 動画情報を取得する関数
-const crawlVideos = async (calendar, pageToken) => {
+const crawlVideos = async (calendar, clickedDate) => {
     const channelId = document.getElementById('dropdown-channels').value;
 
-    let crawlVideosUrl;
-    if (!pageToken) {
-        crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=10&key=${apikey['key']}`;
-    } else {
-        crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&order=date&maxResults=10&pageToken=${pageToken}&key=${apikey['key']}`
-    }
-
+    const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=10&order=date&publishedBefore=${clickedDate}&key=${apikey['key']}`;
     const resultsVideos = await fetch(crawlVideosUrl, {
         method: "GET",
         mode: 'cors',
@@ -33,19 +27,16 @@ const crawlVideos = async (calendar, pageToken) => {
         };
         calendar.addEvent(event);
     });
-
-    // nextPageTokenを取得
-    const { nextPageToken } = resultsVideosJson;
-    pagingToken = nextPageToken;
 };
 
-let pagingToken;
+let clickedDate;
 
 // カレンダーUIを描画する
 document.addEventListener('DOMContentLoaded', () => {
     const calendarEl = document.getElementById('calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['dayGrid'],
+        // 各カレンダー設定
+        plugins: ['dayGrid', 'interaction'],
         defaultView: 'dayGridMonth',
         views: {
             dayGrid: {
@@ -54,24 +45,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         header: {
-            left: 'crawlButton pagingButton',
+            left: 'crawlButton',
             center: 'title',
             right: 'prev,next'
         },
+        selectable: true,
+        eventColor: 'white',
+
+        // ボタン関数
         customButtons: {
             crawlButton: {
                 text: '取得',
                 click: async () => {
-                    await crawlVideos(calendar, pagingToken);
-                }
-            },
-            pagingButton: {
-                text: 'ページング',
-                click: async () => {
-                    await crawlVideos(calendar, pagingToken);
+                    await crawlVideos(calendar, clickedDate);
                 }
             }
         },
+
+        // セルクリック関数
+        dateClick: (info) => {
+            clickedDate = info.dateStr;
+            clickedDate = clickedDate.split("-");
+            clickedDate[2] = String(Number(clickedDate[2]) + 1);
+            clickedDate = clickedDate.join('-');
+            clickedDate = `${clickedDate}T00:00:00Z`;
+            console.log(clickedDate);
+        },
+
+        // 動画データ可視化
         eventRender: (info) => {
             tippy(info.el, {
                 content: `<strong>${info.event.extendedProps.channelTitle}</strong><br>${info.event.title}`,
@@ -85,8 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 info.el.querySelector('.fc-title').innerHTML =
                     `<img src='${info.event.extendedProps.imageurl}' width='170' height='100'>`;
             }
-        },
-        eventColor: 'white'
+        }
     })
     calendar.render();
 });

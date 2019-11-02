@@ -1,7 +1,7 @@
 // 動画情報を取得する関数
 const crawlVideos = async (calendar, clickedDate) => {
     if (!clickedDate) {
-        alert('カレンダーをクリックし，動画を取得したい日付を選択してください!!');
+        alert('カレンダーをクリックし，動画を取得したい日付を選択してください．');
         return;
     }
 
@@ -93,5 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     })
+    // カレンダー描画
     calendar.render();
 });

@@ -1,5 +1,10 @@
 // 動画情報を取得する関数
 const crawlVideos = async (calendar, clickedDate) => {
+    if (!clickedDate) {
+        alert('カレンダーをクリックし，動画を取得したい日付を選択してください!!');
+        return;
+    }
+
     const channelId = document.getElementById('select-menu-channels').value;
 
     const crawlVideosUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=10&order=date&publishedBefore=${clickedDate}&key=${apikey['key']}`;
@@ -58,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 text: '取得',
                 click: async () => {
                     await crawlVideos(calendar, clickedDate);
+                    clickedDate = null;
                 }
             }
         },

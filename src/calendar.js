@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 各カレンダー設定
         plugins: ['dayGrid', 'interaction'],
         defaultView: 'dayGridMonth',
+        height: 'parent',
         views: {
             dayGrid: {
                 eventLimit: 1,
@@ -50,9 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         header: {
-            left: 'crawlButton',
-            center: 'title',
-            right: 'prev,next'
+            left: 'title',
+            right: 'crawlButton prev,next'
         },
         selectable: true,
         eventColor: 'white',
